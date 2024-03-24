@@ -1,3 +1,9 @@
-#sideBar{
-    
+#signOutBtn i,#signOutBtn svg{
+    width: 20px;
+    height: 20px;
+    fill: red;
+    color: red;
+}
+#signOutBtn svg{
+    margin-bottom: 15px;
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthServiceService } from '../../../services/auth/auth-service.service';
+import { UserstateService } from '../../../state/userstate.service';
 
 @Component({
   selector: 'app-register-page',
@@ -14,7 +15,8 @@ export class RegisterPageComponent {
   email = '';
   name = '';
   password = '';
-  constructor(private service:AuthServiceService ,private router:Router) {}
+  constructor(private service:AuthServiceService ,private router:Router,private userStateService: UserstateService
+    ) {}
 
   onSubmit() {
     this.service.register({ email: this.email, name: this.name, password: this.password }).subscribe(
@@ -22,11 +24,8 @@ export class RegisterPageComponent {
         // console.log("cc");
         console.log(authenticationResponse);
         
-        localStorage.setItem('token', authenticationResponse.token);
-        localStorage.setItem('refreshToken', authenticationResponse.refreshToken);
-        localStorage.setItem('role', authenticationResponse.role);
-        localStorage.setItem('name', authenticationResponse.name);
-        localStorage.setItem('email', authenticationResponse.email);
+        this.userStateService.setUser(authenticationResponse);
+
 
         this.router.navigate(['/home']);
     },

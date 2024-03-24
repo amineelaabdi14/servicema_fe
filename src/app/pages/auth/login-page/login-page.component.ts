@@ -29,17 +29,11 @@ export class LoginPageComponent {
             // console.log("cc");
             console.log(authenticationResponse);
             this.userStateService.setUser(authenticationResponse);
-            localStorage.setItem('token', authenticationResponse.token);
-            localStorage.setItem('refreshToken', authenticationResponse.refreshToken);
-            localStorage.setItem('role', authenticationResponse.role);
-            localStorage.setItem('name', authenticationResponse.name);
-            localStorage.setItem('email', authenticationResponse.email);
-            localStorage.setItem('email', authenticationResponse.email);
             
             this.router.navigate(['/home']);
         },
         (error) => {
-          console.error('Error');
+          alert(error.error.message);
         }
       );
   }

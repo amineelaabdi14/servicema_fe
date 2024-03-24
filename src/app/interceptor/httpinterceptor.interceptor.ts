@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 import { EMPTY, Observable, catchError, switchMap } from 'rxjs';
 import { AuthServiceService } from '../services/auth/auth-service.service';
 import { RefreshTokenResponse } from '../dtos/response/RefreshToken.response';
+import { UserstateService } from '../state/userstate.service';
 
 export const httpinterceptorInterceptor: HttpInterceptorFn = (req, next) => {
+  const state = inject(UserstateService);
   if(
     ( req.method=="GET"&&req.url.includes('categories') ) || 
     req.url.includes('login') || 
@@ -19,7 +21,7 @@ export const httpinterceptorInterceptor: HttpInterceptorFn = (req, next) => {
     req = req.clone({
       headers: req.headers.set(
         'Authorization',
-        `Bearer ${localStorage.getItem('token')}`,
+        `Bearer ${state.getUser().token}`,
       ),
     });
   // const router = inject(Router);
@@ -53,6 +55,6 @@ export const httpinterceptorInterceptor: HttpInterceptorFn = (req, next) => {
 
   function getNewToken(): Observable<RefreshTokenResponse> {
     const auth = inject(AuthServiceService);
-    return auth.refresh(localStorage.getItem('refreshToken')!);
+    return auth.refresh(state.getUser().refreshToken);
   }
 };

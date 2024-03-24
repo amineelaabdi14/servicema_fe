@@ -1,3 +1,4 @@
+import { BecomeASellerComponent } from './pages/become-aseller/become-aseller.component';
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout/auth-layout.component';
 import { AppNavbarComponent } from './components/app-navbar/app-navbar.component';
@@ -49,6 +50,17 @@ export const routes: Routes = [
               {
                 path: 'profile',
                 loadComponent: () => import('./pages/profile-page/profile-page.component').then(m => m.ProfilePageComponent)
+              },
+        ],  
+      },
+      {
+        path: 'dashboard',
+        component: DashboardLayoutComponent,
+        canActivate: [authGuardGuard],
+        children: [
+              {
+                path: 'become-a-seller',
+                loadComponent: () => import('./pages/become-aseller/become-aseller.component').then(m => m.BecomeASellerComponent)
               },
         ],
       },

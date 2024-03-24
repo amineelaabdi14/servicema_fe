@@ -3,7 +3,7 @@
     id="edit-profile-form"
     action=""
     method=""
-    (submit)="editProfile()"
+    (ngSubmit)="editProfile()"
     class="d-flex flex-column align-items-center m-auto mt-5"
     enctype="multipart/form-data"
   >
@@ -26,41 +26,39 @@
         onchange=""
       />
     </div>
-    <div id="EditName" class="mt-2 w-100 px-3">
+    <div id="" class="mt-2 w-100 px-3">
       <label for="name" class="edit-label">NAME</label>
       <input
         type="text"
         class="MyInputs edit-service-input w-100"
         name="name"
-        [(value)]="name"
+        [(ngModel)]="user.name"
       />
     </div>
-    <div id="EditEmail" class="mt-2 w-100 px-3">
-      <label for="email" class="edit-label">DESCRIPTION</label>
-      <input
-        type="email"
+    <div id="" class="mt-2 w-100 px-3">
+      <label for="description" class="edit-label">DESCRIPTION</label>
+      <input  
+        type="text"
         class="MyInputs edit-service-input"
-        name="email"
-        [(value)]="email"
+        name="description"
+        [(ngModel)]="user.description"
       />
     </div>
-    <div id="EditEmail" class="mt-2 w-100 px-3">
-      <label for="email" class="edit-label">PHONE</label>
+    <div id="" class="mt-2 w-100 px-3">
+      <label for="phone" class="edit-label">PHONE</label>
       <input
-        type="email"
+        type="text"
         class="MyInputs edit-service-input"
-        name="email"
-        [(value)]="email"
+        name="phone"
+        [(ngModel)]="user.phone"
       />
     </div>
-    <div id="EditEmail" class="mt-2 w-100 px-3">
-      <label for="email" class="edit-label">CITY</label>
-      <input
-        type="email"
-        class="MyInputs edit-service-input"
-        name="email"
-        [(value)]="email"
-      />
+    <div id="" class="mt-2 w-100 px-3">
+      <label for="city" class="edit-label">CITY</label>
+      <select type="text" class="MyInputs edit-service-input" name="city" [(ngModel)]="user.city.name"
+      >
+      <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
+    </select>
     </div>
     <button type="submit" class="mb-2 mt-4">Save</button>
   </form>
