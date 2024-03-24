@@ -1,0 +1,37 @@
+
+<div class="">
+    <div id="elements-container" class="d-flex flex-column-reverse flex-lg-row align-items-center justify-content-lg-around w-100 mt-5">
+        
+        <div id="first-container">
+            <img src="assets/images/landing.png" id="landing-logo" alt="Freelancer.ma" class="mt-4">
+        </div>
+
+        <div id="LoginformContainer" class=" mt-5 mt-lg-0">
+            <img src="assets/images/logo.png" alt="service.ma" class="mt-4 logoContainer">
+            <form id="auth-form" action="" (ngSubmit)="onSubmit()" class="form d-flex flex-column " method="POST">
+                <div id="emailFormContainer">
+                    <label for="email" class="MyLabels">EMAIL</label><br>
+                    <input type="email" name="email" [(ngModel)]="email" class="MyInputs" oninput="" autocomplete="off">
+                    <div id="emailError" class="text-danger"></div>
+                </div>
+
+                <div id="emailFormContainer">
+                    <label for="email" class="MyLabels">NAME</label><br>
+                    <input type="email" name="email" [(ngModel)]="name" class="MyInputs" oninput="" autocomplete="off">
+                    <div id="emailError" class="text-danger"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="MyLabels">PASSWORD</label><br>
+                    <input type="password" name="password" [(ngModel)]="password" class="MyInputs">
+                    <div id="comfirEmailError" class="text-danger mb-0 "></div>
+                </div>
+                <div id="fullName"></div>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span><a href="" routerLink="/auth/login" onclick="">Create an account</a></span>
+                    <button id="login-btn" type="submit"  name="signMeIn" >Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="">
+    <div>
+        <img src="/assets/images/construction-plumbing.jpeg" alt="" class="w-100 h-auto d-none d-lg-block">
+    </div>
+    <div class=" px-5 py-3 w-100 d-flex flex-wrap justify-content-around">
+            <a [routerLink]="['/service/', service.id]" class="mb-4 " *ngFor="let service of services">
+                <div class="card  myService-card ">
+                    <img src="/assets/images/upload-service-image.png" class="card-img-top" alt="Hollywood Sign on The Hill" />
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title">{{service.title}}</h5>
+                        <p class="text-secondary mb-0">{{service.description}}</p>
+                        <strong>{{service.startingPrice}} Mad</strong>
+                    </div>
+                </div>
+            </a>
+    </div>
+    
+
+</div>

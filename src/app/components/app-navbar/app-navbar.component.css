@@ -1,0 +1,19 @@
+.search-btn-navbar {
+  width: 30px;
+  background-color: transparent;
+  border: none;
+}
+.login-btn {
+    background-color: #000000;
+    color: white;
+    border-radius: 600px;
+}
+.register-btn {
+  color: #000000;
+  text-decoration: underline;
+}
+button.me-1{
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
