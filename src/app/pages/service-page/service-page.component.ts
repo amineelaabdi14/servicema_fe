@@ -4,6 +4,7 @@ import { AppContentService } from '../../services/app-content/app-content.servic
 import { ActivatedRoute } from '@angular/router';
 import { Service } from '../../models/Service.model';
 import { CommonModule } from '@angular/common';
+import { ServiceService } from '../../services/service/service.service';
 
 @Component({
   selector: 'app-service-page',
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class ServicePageComponent implements OnInit{
     id!: number;
     myservice!: Service;
-    constructor(private service:AppContentService,private route : ActivatedRoute) { 
+    constructor(private service:ServiceService,private route : ActivatedRoute) { 
 
     }
   
@@ -24,7 +25,7 @@ export class ServicePageComponent implements OnInit{
       this.route.params.subscribe(params => {
         this.id = params['id'];
       });
-      this.service.getServiceById(this.id).subscribe(data => {
+      this.service.getService(this.id).subscribe(data => {
         this.myservice = data;
       }, error => {
         console.log(error);

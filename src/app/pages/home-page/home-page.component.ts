@@ -3,6 +3,7 @@ import { AppContentService } from '../../services/app-content/app-content.servic
 import { Service } from '../../models/Service.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceService } from '../../services/service/service.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,7 +14,7 @@ import { RouterModule } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
   services! :Service[];
-  constructor(private service :AppContentService) { }
+  constructor(private service :ServiceService) { }
 
   ngOnInit(): void {
     this.service.getServices("").subscribe(data => {

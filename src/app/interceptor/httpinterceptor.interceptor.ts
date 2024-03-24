@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { EMPTY, Observable, catchError, switchMap } from 'rxjs';
 import { refreshTokenResponse } from '../dtos/response/RefreshToken.response';
+import { AuthServiceService } from '../services/auth/auth-service.service';
 
 export const httpinterceptorInterceptor: HttpInterceptorFn = (req, next) => {
   if (!req.url.includes('login') && !req.url.includes('register')) {
@@ -41,7 +42,7 @@ export const httpinterceptorInterceptor: HttpInterceptorFn = (req, next) => {
     }),
   );
   function getNewToken(): Observable<refreshTokenResponse> {
-    const auth = inject(AUthen);
+    const auth = inject(AuthServiceService);
     return auth.refresh(localStorage.getItem('refresh')!);
   }
 };
