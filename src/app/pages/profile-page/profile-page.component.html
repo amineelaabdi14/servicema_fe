@@ -1,0 +1,67 @@
+<div id="profile" class="hasSideBar hasNavBar">
+  <form
+    id="edit-profile-form"
+    action=""
+    method=""
+    (submit)="editProfile()"
+    class="d-flex flex-column align-items-center m-auto mt-5"
+    enctype="multipart/form-data"
+  >
+    <div
+      id="edit-profile-avatar"
+      class="d-flex flex-column align-items-center mt-4 w-100 px-3"
+    >
+      <img
+        id="editImage"
+        src="/assets/images/avatar.png"
+        alt=""
+        class="rounded-circle object-fit-contain"
+        style="width: 180px; height: 180px"
+      />
+      <input
+        type="file"
+        class="form-control my-4 w-100 mb-0"
+        id="image-upload"
+        name="photo"
+        onchange=""
+      />
+    </div>
+    <div id="EditName" class="mt-2 w-100 px-3">
+      <label for="name" class="edit-label">NAME</label>
+      <input
+        type="text"
+        class="MyInputs edit-service-input w-100"
+        name="name"
+        [(value)]="name"
+      />
+    </div>
+    <div id="EditEmail" class="mt-2 w-100 px-3">
+      <label for="email" class="edit-label">DESCRIPTION</label>
+      <input
+        type="email"
+        class="MyInputs edit-service-input"
+        name="email"
+        [(value)]="email"
+      />
+    </div>
+    <div id="EditEmail" class="mt-2 w-100 px-3">
+      <label for="email" class="edit-label">PHONE</label>
+      <input
+        type="email"
+        class="MyInputs edit-service-input"
+        name="email"
+        [(value)]="email"
+      />
+    </div>
+    <div id="EditEmail" class="mt-2 w-100 px-3">
+      <label for="email" class="edit-label">CITY</label>
+      <input
+        type="email"
+        class="MyInputs edit-service-input"
+        name="email"
+        [(value)]="email"
+      />
+    </div>
+    <button type="submit" class="mb-2 mt-4">Save</button>
+  </form>
+</div>

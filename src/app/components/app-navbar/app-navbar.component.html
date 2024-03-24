@@ -39,6 +39,7 @@
       </button>
     </form>
     <div class=" d-flex flex-row justify-content-end">
+      @if (isloggedIn==true) {
       <div class="dropdown me-5">
         <button
           class="btn dropdown-toggle"
@@ -46,27 +47,23 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <img src="" class="rounded-circle" alt="" style="width: 30px" />
+          <img src="/assets/images/avatar.png" class="rounded-circle" alt="" style="width: 30px" />
         </button>
         <ul class="dropdown-menu me-5">
-          <li><a class="dropdown-item" href="/profile">Profile</a></li>
-          <li><a class="dropdown-item" href="/my-services">My Services</a></li>
-          <li><a class="dropdown-item" href="/my-proposals">Categories</a></li>
-          <li>
-            <a class="dropdown-item" href="/become-a-seller">Become a seller</a>
-          </li>
-          <li><a class="dropdown-item" href="/manage-users">Reports</a></li>
+          <li><a class="dropdown-item" routerLink="/dashboard/profile">Profile</a></li>
           <li><a class="dropdown-item" href="">Logout</a></li>
         </ul>
       </div>
+    }@else{
       <div class="d-flex flex-row align-content-center justify-content-end">
         <button href="" class="me-1"
-          ><button routerLink="auth/login" class="btn login-btn mt-2">Login</button></button
+          ><button routerLink="/auth/login" class="btn login-btn mt-2">Login</button></button
         >
-        <a href="" class="me-5"
-          ><button class="btn register-btn mt-2">Register</button></a
+        <button href="" class="me-1"
+          ><button routerLink="/auth/register" class="btn register-btn mt-2">Register</button></button
         >
       </div>
+    }
     </div>
   </div>
   <div class="w-100 mt-3 navbar-category">

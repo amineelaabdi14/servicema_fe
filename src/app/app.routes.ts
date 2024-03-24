@@ -1,9 +1,9 @@
-import { ServicePageComponent } from './pages/service-page/service-page.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout/auth-layout.component';
 import { AppNavbarComponent } from './components/app-navbar/app-navbar.component';
 import { AppContentComponent } from './layouts/app-content/app-content.component';
+import { DashboardLayoutComponent } from './layouts/dashboard/dashboard-layout/dashboard-layout.component';
+import { authGuardGuard } from './guards/auth/auth-guard.guard';
 
 export const routes: Routes = [
     {
@@ -38,6 +38,17 @@ export const routes: Routes = [
               {
                 path: 'service/:id',
                 loadComponent: () => import('./pages/service-page/service-page.component').then(m => m.ServicePageComponent)
+              },
+        ],
+      },
+      {
+        path: 'dashboard',
+        component: DashboardLayoutComponent,
+        canActivate: [authGuardGuard],
+        children: [
+              {
+                path: 'profile',
+                loadComponent: () => import('./pages/profile-page/profile-page.component').then(m => m.ProfilePageComponent)
               },
         ],
       },

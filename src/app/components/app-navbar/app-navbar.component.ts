@@ -5,6 +5,7 @@ import { Category } from '../../dtos/response/Category.response';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { UserstateService } from '../../state/userstate.service';
 
 @Component({
   selector: 'app-app-navbar',
@@ -19,9 +20,13 @@ import { RouterModule } from '@angular/router';
 export class AppNavbarComponent implements OnInit{
   categories$ !:Observable<Category[]>;
   navbarItems !: Category[];
-  constructor(private appContentService :AppContentService) { }
+  isloggedIn = false;
+  constructor(private appContentService :AppContentService,private userStateService:UserstateService) { }
 
   ngOnInit(): void {
+    if(this.userStateService.getUser() != null){
+      this.isloggedIn = true;
+    }
     this.categories$ = this.appContentService.getCategories();
     this.categories$.subscribe(data => {
       this.navbarItems = data;

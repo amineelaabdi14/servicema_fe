@@ -22,6 +22,8 @@ export class AuthServiceService {
   }
 
   refresh(refreshToken: string):Observable<RefreshTokenResponse> {
+    console.log('refresh token');
+    
     return this.httpclient.post<RefreshTokenResponse>('http://localhost:8081/auth/refresh', {'refreshToken':refreshToken});
   }
 }
