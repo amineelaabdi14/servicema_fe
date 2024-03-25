@@ -27,4 +27,8 @@ export class ServiceService {
     const url = `http://localhost:8081/api/v1/services`;
     return this.httpclient.post<Service>(url, service);
   }
+  deleteService(id: number) {
+    const url = `http://localhost:8081/api/v1/services/${id}`;
+    return this.httpclient.delete(url);
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserstateService } from '../../state/userstate.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -12,7 +12,8 @@ import { RouterModule } from '@angular/router';
 export class SideBarComponent implements OnInit{
   role!: string;
   constructor(
-    private userStateService: UserstateService
+    private userStateService: UserstateService,
+    private router: Router
   ) { }
   ngOnInit(): void {
     this.role = this.userStateService.getUser().role;
@@ -32,5 +33,7 @@ export class SideBarComponent implements OnInit{
     );
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
+    localStorage.removeItem('role');
+    this.router.navigate(['/auth/login']);
   }
 }

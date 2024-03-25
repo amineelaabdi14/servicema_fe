@@ -31,6 +31,7 @@ export class LoginPageComponent {
             this.userStateService.setUser(authenticationResponse);
             localStorage.setItem('token', authenticationResponse.token);
             localStorage.setItem('refreshToken', authenticationResponse.refreshToken);
+            localStorage.setItem('role', authenticationResponse.role);
             this.router.navigate(['/home']);
         },
         (error) => {

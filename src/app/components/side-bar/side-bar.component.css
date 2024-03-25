@@ -15,3 +15,9 @@ i svg{
 i{
     margin-bottom: 5px;
 }
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}

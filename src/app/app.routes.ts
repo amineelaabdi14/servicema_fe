@@ -1,3 +1,4 @@
+import { ReportsbyserviceComponent } from './pages/reportsbyservice/reportsbyservice.component';
 import { AddServiceComponent } from './pages/add-service/add-service.component';
 import { BecomeASellerComponent } from './pages/become-aseller/become-aseller.component';
 import { Routes } from '@angular/router';
@@ -6,6 +7,9 @@ import { AppNavbarComponent } from './components/app-navbar/app-navbar.component
 import { AppContentComponent } from './layouts/app-content/app-content.component';
 import { DashboardLayoutComponent } from './layouts/dashboard/dashboard-layout/dashboard-layout.component';
 import { authGuardGuard } from './guards/auth/auth-guard.guard';
+import { userguardGuard } from './guards/role-guards/user/userguard.guard';
+import { sellerguardGuard } from './guards/role-guards/seller/sellerguard.guard';
+import { adminguardGuard } from './guards/role-guards/admin/adminguard.guard';
 
 export const routes: Routes = [
     {
@@ -57,7 +61,7 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardLayoutComponent,
-        canActivate: [authGuardGuard],
+        canActivate: [authGuardGuard,userguardGuard],
         children: [
               {
                 path: 'become-a-seller',
@@ -68,7 +72,7 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardLayoutComponent,
-        canActivate: [authGuardGuard],
+        canActivate: [authGuardGuard,sellerguardGuard],
         children: [
               {
                 path: 'my-services',
@@ -79,11 +83,22 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardLayoutComponent,
-        canActivate: [authGuardGuard],
+        canActivate: [authGuardGuard,sellerguardGuard],
         children: [
               {
                 path: 'add-service',
                 loadComponent: () => import('./pages/add-service/add-service.component').then(m => m.AddServiceComponent)
+              },
+        ],
+      },
+      {
+        path: 'dashboard',
+        component: DashboardLayoutComponent,
+        canActivate: [authGuardGuard,adminguardGuard],
+        children: [
+              {
+                path: 'reports',
+                loadComponent: () => import('./pages/reportsbyservice/reportsbyservice.component').then(m => m.ReportsbyserviceComponent)
               },
         ],
       },

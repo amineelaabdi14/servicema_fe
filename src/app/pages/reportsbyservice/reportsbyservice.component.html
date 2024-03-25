@@ -1,0 +1,29 @@
+
+    <div class="">
+
+        <div class="d-flex flex-column align-items-center pt-3 mt-3 px-4">
+        </div>
+        <div class="px-4 mt-4">
+            <h4>Reports</h4>
+           
+            <div id="manage-user-services" class="mt-5 px-4 w-100">
+                <table id="userstable" class="position-static table align-middle mb-0 bg-white" >
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Service Id</th>
+                            <th>Service title</th>
+                            <th>Reports Counts</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let report of reports">
+                            <td>{{report.serviceId}}</td>
+                            <td>{{report.serviceTitle}}</td>
+                            <td>{{report.count}}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+        </div>
+    </div>

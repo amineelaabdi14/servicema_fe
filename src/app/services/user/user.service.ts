@@ -24,7 +24,8 @@ export class UserService {
   }
 
   getUserByJwt():Observable<User>{
-    return this.httpclient.post<User>(this.url+'/user/getByJwt',null);
+    console.log(this.httpclient.post<User>(this.url+'/user/getByJwt',null));
+    return this.httpclient.post<User>(this.url+'/user/getByJwt',null);    
   }
 
 }

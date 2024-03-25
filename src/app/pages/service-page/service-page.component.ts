@@ -71,10 +71,9 @@ export class ServicePageComponent implements OnInit{
         return;
       }
       this.commentService.sendComment({serviceId:this.id,comment:this.commnentMessage}).subscribe(data=>{
-        alert(data.message);
         this.ngOnInit();
       },error=>{
-        console.log(error);
+        alert(error.error.message);
       });
     }
 }

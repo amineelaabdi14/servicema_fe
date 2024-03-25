@@ -43,7 +43,7 @@ export class AddServiceComponent implements OnInit {
       })
       .subscribe((data) => {
         alert('Service added successfully');
-        this.router.navigate(['/manage-services']);
+        this.router.navigate(['/dashboard/my-services']);
       });
   }
 }

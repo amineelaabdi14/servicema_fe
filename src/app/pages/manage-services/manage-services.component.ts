@@ -22,5 +22,19 @@ export class ManageServicesComponent implements OnInit{
         this.services = data;
       });
     }
+    deleteService(id:number){
+      if(!confirm("Are you sure you want to delete this service?")){
+        return;
+      }
+      this.service.deleteService(id).subscribe(
+        (data) => {
+          alert("Service Deleted");
+          this.ngOnInit();
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
 
 }

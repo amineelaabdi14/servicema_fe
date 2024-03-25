@@ -7,6 +7,7 @@ export interface Service {
     description: string;
     startingPrice: number;
     image: number;
+    phone: string;
     category: string;
     comments: Comment[];
 }

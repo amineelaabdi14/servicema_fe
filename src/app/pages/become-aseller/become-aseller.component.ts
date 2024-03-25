@@ -34,6 +34,12 @@ export class BecomeASellerComponent implements OnInit {
       this.userService.becomeASeller({title:this.job_title,phone:this.phone,description:this.description}).subscribe(
         (user) => {
           alert("Seller Request Submitted");
+          const myUser = this.state.getUser();
+          myUser.description = this.description;
+          myUser.phone = this.phone;
+          myUser.role = 'SELLER';
+          localStorage.setItem('role','SELLER');
+          this.state.setUser(myUser);
           this.router.navigate(['/dashboard/profile']);
         },
         (error) => {
