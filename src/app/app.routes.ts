@@ -1,3 +1,4 @@
+import { AddServiceComponent } from './pages/add-service/add-service.component';
 import { BecomeASellerComponent } from './pages/become-aseller/become-aseller.component';
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout/auth-layout.component';
@@ -61,6 +62,28 @@ export const routes: Routes = [
               {
                 path: 'become-a-seller',
                 loadComponent: () => import('./pages/become-aseller/become-aseller.component').then(m => m.BecomeASellerComponent)
+              },
+        ],
+      },
+      {
+        path: 'dashboard',
+        component: DashboardLayoutComponent,
+        canActivate: [authGuardGuard],
+        children: [
+              {
+                path: 'my-services',
+                loadComponent: () => import('./pages/manage-services/manage-services.component').then(m => m.ManageServicesComponent)
+              },
+        ],
+      },
+      {
+        path: 'dashboard',
+        component: DashboardLayoutComponent,
+        canActivate: [authGuardGuard],
+        children: [
+              {
+                path: 'add-service',
+                loadComponent: () => import('./pages/add-service/add-service.component').then(m => m.AddServiceComponent)
               },
         ],
       },

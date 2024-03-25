@@ -1,7 +1,9 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AppNavbarComponent } from './components/app-navbar/app-navbar.component';
+import { UserService } from './services/user/user.service';
+import { UserstateService } from './state/userstate.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,19 @@ import { AppNavbarComponent } from './components/app-navbar/app-navbar.component
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'servicema';
+  constructor(
+    private userService:UserService,
+    private state:UserstateService,
+    private router:Router
+  ) { }
+  ngOnInit(): void {
+    if(localStorage.getItem('token')!=null){
+      this.userService.getUserByJwt().subscribe(user=>{
+        this.state.setUser(user);
+      });
+  
+    }
+  }
 }

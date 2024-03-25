@@ -5,7 +5,7 @@ import { UserstateService } from '../../state/userstate.service';
 export const authGuardGuard: CanActivateFn = (route, state) => {
   const nav = inject(Router);
   const user = inject(UserstateService);
-  if(user.getUser() == null){
+  if(localStorage.getItem('token') == null){
     nav.navigate(['/auth/login']);
     return false;
   }

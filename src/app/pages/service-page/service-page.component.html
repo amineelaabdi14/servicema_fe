@@ -40,19 +40,19 @@
                           <span class="text-secondary">No comments for this service</span>
                       }
                       @else{
-                      <div class="d-flex flex-start mb-4">
+                      <div class="d-flex flex-start mb-4" *ngFor="let item of comments">
                         <img class="rounded-circle shadow-1-strong me-3"
                           src="/assets/images/avatar.png" alt="avatar" width="60"
                           height="60" />
                         <div>
-                          <h6 class="fw-bold mb-1">Name</h6>
+                          <h6 class="fw-bold mb-1">{{item.user}}</h6>
                           <div class="d-flex align-items-center mb-1">
                             <p class="mb-0 fst-italic text-secondary" style="font-size:15px;">
                               2024-01-26
                             </p>
                           </div>
                           <p class="mb-0">
-                            comment
+                            {{item.comment}}
                         </p>
                         </div>
                       </div>
@@ -63,9 +63,9 @@
                 </div>
                 <div class="mt-3">
                 </div>
-                <form id="add-comment-form" action="" method="POST" class="w-100 m-auto d-flex flex-column  align-items-center mt-5">
+                <form id="add-comment-form" action="" method="POST" class="w-100 m-auto d-flex flex-column  align-items-center mt-5" (ngSubmit)="makeComment()">
                   <div class=" w-75">
-                    <textarea  id="comment-input" cols="30" name="comment" rows="10" class="w-75 ps-2 border border-1 border-secondary rounded-1 w-100" placeholder="Enter your comment"></textarea>
+                    <textarea [(ngModel)]="commnentMessage"  id="comment-input" cols="30" name="comment" rows="10" class="w-75 ps-2 border border-1 border-secondary rounded-1 w-100" placeholder="Enter your comment"></textarea>
                     <button class="btn btn-primary mt-4"  type="submit" style="width: 100px">Comment</button>
                   </div>
                 </form>
@@ -81,12 +81,12 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Submit a report</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button #closebutton type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="post">
+            <form action="" method="post" (ngSubmit)="sendReport()">
               <label for="" class="MyLabels">Report message</label>
-              <textarea name="reportMessage" id="" cols="20" rows="3" class="edit-service-input ps-3 pt-2"></textarea>
+              <textarea name="reportMessage" id="" cols="20" rows="3" class="edit-service-input ps-3 pt-2" [(ngModel)]="message"></textarea>
               <button type="submit" class="btn btn-danger">Submit</button>
             </form>
           </div>

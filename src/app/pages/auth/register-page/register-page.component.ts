@@ -25,7 +25,8 @@ export class RegisterPageComponent {
         console.log(authenticationResponse);
         
         this.userStateService.setUser(authenticationResponse);
-
+        localStorage.setItem('token', authenticationResponse.token);
+        localStorage.setItem('refreshToken', authenticationResponse.refreshToken);
 
         this.router.navigate(['/home']);
     },

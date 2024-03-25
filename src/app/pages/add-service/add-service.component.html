@@ -1,0 +1,38 @@
+<div id="dashboard-content" class="">
+    <div id="edit-add-form" class="p-5 w-lg-50 m-auto shadow-lg mt-5 rounded-2" style="border:solid #dfdfdf 0.5px">
+      <form class="" action="" method="POST" enctype="multipart/form-data" (ngSubmit)="addService()">
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4 d-flex flex-lg-row flex-column-reverse align-items-end">
+          <div class="form-outline">
+            <label class="form-label MyLabels" for="form6Example1">Title</label>
+            <input name="title" type="text" [(ngModel)]="title" class="MyInputs edit-service-input" value="">
+          </div>
+          <div class="col d-flex flex-column align-items-end">
+          </div>
+        </div>
+        <!-- Text input -->
+        <div class="form-outline mb-4">
+          <label class="MyLabels" for="form6Example3">Category</label>
+          <select id="" [(ngModel)]="categoryId" class="MyInputs edit-service-input mb-4" name="category_id">
+            <option value="{{category.id}}" *ngFor="let category of categories">{{category.category}}</option>
+          </select>
+        </div>
+  
+        <!-- Text input -->
+        <div class="form-outline mb-4 d-flex flex-row justify-content-start">
+          <div class="w-25">
+            <label class="MyLabels" for="form6Example4">Starting Price</label>
+            <input type="number" [(ngModel)]="startingPrice" name="price" id="form6Example4" class="form-control w-100 MyInputs edit-service-input">
+          </div>
+        </div>
+  
+        <!-- Message input -->
+        <div class="form-outline mb-4">
+          <label class="form-label MyLabels" for="form6Example7">Description</label>
+          <textarea name="description" [(ngModel)]="description" class="edit-service-input ps-3 pt-2" id="form6Example7" rows="4"></textarea>
+        </div>
+        <!-- Submit button -->
+        <button class="btn btn-primary btn-block w-100" style="background-color: rgb(12, 92, 160);">Save</button>
+      </form>
+    </div>
+  </div>

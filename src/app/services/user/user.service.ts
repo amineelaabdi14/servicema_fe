@@ -23,4 +23,8 @@ export class UserService {
     return this.httpclient.post<BecomeASellerResponse>(this.url+'/user/becomeSellser',req);
   }
 
+  getUserByJwt():Observable<User>{
+    return this.httpclient.post<User>(this.url+'/user/getByJwt',null);
+  }
+
 }
