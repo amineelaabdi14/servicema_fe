@@ -43,7 +43,7 @@ export class BecomeASellerComponent implements OnInit {
           this.router.navigate(['/dashboard/profile']);
         },
         (error) => {
-          console.error(error);
+          console.log(error);
         }
       );
     }

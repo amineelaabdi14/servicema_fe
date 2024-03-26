@@ -13,6 +13,7 @@
                             <th>Service Id</th>
                             <th>Service title</th>
                             <th>Reports Counts</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -20,6 +21,9 @@
                             <td>{{report.serviceId}}</td>
                             <td>{{report.serviceTitle}}</td>
                             <td>{{report.count}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="deleteService(report.serviceId)">Delete</button>
+                            </td>
                         </tr>
                     </tbody>
                   </table>

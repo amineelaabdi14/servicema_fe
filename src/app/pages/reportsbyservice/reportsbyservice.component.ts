@@ -1,7 +1,8 @@
+import { ReportserviceService } from './../../services/report/reportservice.service';
 import { Component, OnInit } from '@angular/core';
-import { ReportserviceService } from '../../services/report/reportservice.service';
 import { ReportsPerServiceResponse } from '../../dtos/response/ReportsPerService.response';
 import { CommonModule } from '@angular/common';
+import { ServiceService } from '../../services/service/service.service';
 
 @Component({
   selector: 'app-reportsbyservice',
@@ -13,7 +14,8 @@ import { CommonModule } from '@angular/common';
 export class ReportsbyserviceComponent implements OnInit{
   reports!: ReportsPerServiceResponse[];
   constructor(
-    private reportService:ReportserviceService
+    private reportService:ReportserviceService,
+    private serviceService:ServiceService
   ) { }
 
   ngOnInit(): void {
@@ -21,6 +23,16 @@ export class ReportsbyserviceComponent implements OnInit{
       this.reports = data;
       console.log(this.reports);
       
+    });
+  }
+  deleteService(id:number){
+    this.serviceService.deleteService(id).subscribe(data=>{
+      console.log(data);
+      this.reportService.getReportCountPerService().subscribe(data=>{
+        this.reports = data;
+        console.log(this.reports);
+        
+      });
     });
   }
 
